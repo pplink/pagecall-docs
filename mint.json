@@ -1,6 +1,6 @@
 {
   "$schema": "https://mintlify.com/schema.json",
-  "name": "Documentation Starter Kit",
+  "name": "Pagecall Documentation",
   "logo": {
     "dark": "/logo/dark.png",
     "light": "/logo/light.png"
@@ -11,55 +11,71 @@
     "light": "#4D9CFF",
     "dark": "#0050B4"
   },
-  "topbarLinks": [
-    {
-      "name": "Documentation",
-      "url": "https://mintlify.com/docs"
-    }
-  ],
-  "topbarCtaButton": {
-    "name": "Get Started",
-    "url": "https://github.com/mintlify/starter"
-  },
   "anchors": [
     {
       "name": "API Reference",
       "icon": "rectangle-terminal",
-      "url": "api-reference"
-    },
-    {
-      "name": "Changelog",
-      "icon": "list",
-      "url": "https://mintlify.com"
-    },
-    {
-      "name": "Community",
-      "icon": "discord",
-      "url": "https://mintlify.com/community"
+      "url": "references"
     }
   ],
   "navigation": [
     {
       "group": "Home",
-      "pages": ["introduction", "features"]
-    },
-    {
-      "group": "API Documentation",
-      "pages": ["api-reference/authentication"]
-    },
-    {
-      "group": "Endpoint Examples",
       "pages": [
-        "api-reference/endpoint/get",
-        "api-reference/endpoint/create",
-        "api-reference/endpoint/update",
-        "api-reference/endpoint/delete"
+        "introduction"
+      ]
+    },
+    {
+      "group": "HTTP API Guides",
+      "pages": [
+        "tutorials/quickstart",
+        "tutorials/authentication",
+        "tutorials/workspace"
+      ]
+    },
+    {
+      "group": "Room Endpoints",
+      "pages": [
+        "references/endpoints/List_Rooms",
+        "references/endpoints/Create_Room",
+        "references/endpoints/Get_Room",
+        "references/endpoints/Update_Room",
+        "references/endpoints/Delete_Room",
+        "references/endpoints/List_Room_Templates"
+      ]
+    },
+    {
+      "group": "User Endpoints",
+      "pages": [
+        "references/endpoints/List_Users",
+        "references/endpoints/Create_User",
+        "references/endpoints/Get_User",
+        "references/endpoints/Update_User",
+        "references/endpoints/Delete_User"
+      ]
+    },
+    {
+      "group": "Member Endpoints",
+      "pages": [
+        "references/endpoints/List_Members",
+        "references/endpoints/Create_Member",
+        "references/endpoints/Get_Member",
+        "references/endpoints/Update_Member"
       ]
     }
   ],
+  "openapi": "/openapi3.yaml",
+  "api": {
+    "auth": {
+      "method": "bearer"
+    }
+  },
   "footerSocials": {
-    "twitter": "https://twitter.com/mintlify",
-    "github": "https://github.com/mintlify",
-    "linkedin": "https://www.linkedin.com/company/mintsearch"
+    "github": "https://github.com/pplink",
+    "linkedin": "https://kr.linkedin.com/company/pagecall"
+  },
+  "modeToggle": {
+    "default": "light",
+    "isHidden": true
   }
 }

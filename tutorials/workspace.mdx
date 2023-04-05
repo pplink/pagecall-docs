@@ -1,0 +1,99 @@
+---
+title: "Workspace"
+description: "Manage users with workspace"
+---
+
+Pagecall provides an APIs for seamless integration with existing user databases. Let's say you are using Pagecall for one-on-one tutoring services. To ensure an effective tutoring experience, the following features are required:
+
+- Register user within the workspace
+- Create a meeting room for tutoring
+- Invite user to join the created meeting room
+
+This document provides examples for implementing each of these features.
+
+## Register user to the workspace
+
+Pagecall manages users in the workspace scope. You can invite or change the permission of invited users. To register a user to the workspace using API, you can use the [Create User](/references/endpoints/Create_User) API.
+
+```js
+const axios = require("axios");
+
+const apiKey = "YOUR_API_KEY";
+
+const user_id = "USER_ID_ASSIGNED_BY_YOUR_SERVICE"; // required
+const name = "USER_NAME"; // optional
+const profile_url = "USER_PROFILE_IMAGE_URL"; // optional
+
+axios
+  .post(
+    "https://api.pagecall.com/v1/users",
+    { user_id, name, profile_url },
+    { headers: { Authorization: `Bearer ${apiKey}` } }
+  )
+  .then((response) => {
+    const { user } = response.data;
+    // User created with AccessToken: TfowtRYBs0E_trzoTaCmAXKzB1JxDDhi
+    console.log(`User created with AccessToken:`, user.access_token);
+  })
+  .catch((error) => {
+    console.error("Error creating user:", error);
+  });
+```
+
+Remember that the users created by Pagecall API can not access the Pagecall console. Instead, using the `access_token`, user can join the room with authentication that anonymous user can not access.
+
+## Create a meeting room
+
+After registering a user to the workspace, you can create a meeting room that can be either public or private, which only authenticated users can join. Below is an example code snippet using the [Create Room](/references/endpoints/Create_Room) API to create a private one-on-one meeting room:
+
+```js
+const axios = require("axios");
+
+const apiKey = "YOUR_API_KEY";
+const mentor_user_id = "USER_ID_ASSIGNED_BY_YOUR_SERVICE";
+const mentee_user_id = "USER_ID_ASSIGNED_BY_YOUR_SERVICE";
+
+axios
+  .post(
+    "https://api.pagecall.com/v1/rooms",
+    {
+      name: "One-on-One Meeting, Ashley & Jayden",
+      type: "private", // Could be one of 'open', 'public' or 'private'
+      members: [
+        { user_id: mentor_user_id, type: "host" },
+        { user_id: mentee_user_id, type: "guest" },
+      ],
+    },
+    { headers: { Authorization: `Bearer ${apiKey}` } }
+  )
+  .then((response) => {
+    const { room } = response.data;
+    console.log(`Meeting room created with ID:`, room.id);
+  })
+  .catch((error) => {
+    console.error("Error creating meeting room:", error);
+  });
+```
+
+As shown in the example, a private one-on-one meeting room is created and has two members, the mentor as the host and the mentee as the guest.
+
+In Pagecall, the user joined the meeting room is called the `member`. To add or update the member states, check the [Member](/references/endpoints/List_Member) APIs.
+
+Additionally, there are three different types for room:
+
+- `open`: Anyone, including anonymous users, can join the room without an invitation or approval.
+- `public`: All users registered in the same workspace can join the room.
+- `private`: Only invited users can join the room.
+
+## Invite user to join the created meeting room
+
+Now that you have created a meeting room, you can invite users to join it. One way to do this is by generating an invite link for each user in the following format:
+
+```js
+return redirect(
+  302,
+  `https://app.pagecall.com/meet?room_id=${room.id}&access_token=${user.access_token}`
+);
+```
+
+When the user joins the meeting using the generated URL, they will automatically be logged in as the specified user.

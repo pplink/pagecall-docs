@@ -1,0 +1,42 @@
+---
+title: "Authentication"
+description: "Authentication with Pagecall API Key"
+---
+
+## Introduction
+
+Before start using the Pagecall API, you'll need to authenticate with our servers using an `API Key` token. The token is an encrypted string that identifies you and allows you to access our API resources in workspace scope.
+
+In this section, we'll show you how to generate and use a `API Key` token for your account, and how to use the token to make authenticated requests to the Pagecall API.
+
+## Generating an API Key
+
+An `API Key` is available in workspace scope, which means you can create a different key for each workspace you have. To generate an `API Key`, simply goes to workspace settings and click "Generate" button in API Key section.
+
+## Using the API Key
+
+To use the created token, it should be included in Authorization Bearer Token Header. Here's an example code snippet for making an authenticated GET request to the [/rooms](/references/endpoints/List_Rooms) endpoint using JavaScript and Axios:
+
+```js
+const axios = require("axios");
+
+const apiKey = "YOUR_API_KEY";
+
+axios
+  .get("https://api.pagecall.com/v1/rooms", {
+    headers: {
+      Authorization: `Bearer ${apiKey}`,
+    },
+  })
+  .then((response) => {
+    const { rooms } = response.data;
+    console.log("Rooms:", rooms);
+  })
+  .catch((error) => {
+    console.error("Error getting rooms:", error);
+  });
+```
+
+## Conclusion
+
+Congratulations! You've learned how to authenticate with the Pagecall API using a Bearer token. Now you can start making authenticated requests to our API resources. If you have any questions or run into any issues, please don't hesitate to contact our support team. We're always here to help!
