@@ -34,6 +34,12 @@
       ]
     },
     {
+      "group": "Platforms",
+      "pages": [
+        "tutorials/platform"
+      ]
+    },
+    {
       "group": "Room Endpoints",
       "pages": [
         "references/endpoints/List_Rooms",
