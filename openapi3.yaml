@@ -171,6 +171,62 @@ paths:
           description: Invalid Parameters Supplied or Unauthenticated or Unauthorized
         "500":
           description: Validation exception
+  /rooms/{room_id}/pages/create_many:
+    parameters:
+      - in: path
+        name: room_id
+        required: true
+        schema:
+          type: string
+        description: room id
+        example: 000585f36eed9e8fb6b655b4
+    post:
+      security:
+        - ApiKeyAuth: []
+      tags: [room]
+      summary: Create Pages For Room
+      description: Create new pages in a meeting room (Bulk API)
+      operationId: CreateRoomsPage
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: array
+              items:
+                $ref: "#/components/schemas/Page"
+      responses:
+        "200":
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  pages:
+                    type: array
+                    description: Created pages
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: string
+                        entities:
+                          $ref: "#/components/schemas/Entity"
+                    example:
+                      - id: "000585f36eed9e8fb6b655b4"
+                        entities:
+                          - type: Image
+                            src: "https://picsum.photos/id/237/536/354"
+                      - id: "000585f36eed9e8fb6b655b5"
+                        entities:
+                          - type: Image
+                            src: "https://picsum.photos/id/237/536/354"
+                          - type: Image
+                            src: "https://picsum.photos/id/237/536/354"
+        "400":
+          description: Invalid Parameters Supplied or Unauthenticated or Unauthorized
+        "500":
+          description: Validation exception
   /rooms/{room_id}/members:
     parameters:
       - in: path
@@ -821,6 +877,52 @@ components:
         is_blocked:
           type: boolean
           description: Kick the user from the room immediately, Works only on private type meeting room.
+    EntityType:
+      type: string
+      description: |
+        Type of entity in a page. Currently, manipulation through the API is only allowed for Image entities.
+        - Image: Image
+      enum:
+        - Image
+      example: Image
+    Entity:
+      type: object
+      required:
+        - type
+      properties:
+        type:
+          $ref: "#/components/schemas/EntityType"
+        src:
+          type: string
+          description: Source url (required for Image)
+          example: "https://picsum.photos/id/237/536/354"
+        fixed:
+          type: boolean
+          description: If true, entity is created in a locked state
+    Page:
+      type: object
+      properties:
+        entities:
+          type: array
+          items:
+            $ref: "#/components/schemas/Entity"
+        size:
+          type: object
+          description: Size of a page
+          required:
+            - width
+            - height
+          properties:
+            width:
+              type: integer
+            height:
+              type: integer
+          default:
+            width: 4000
+            height: 3000
+        index:
+          type: integer
+
   securitySchemes:
     ApiKeyAuth:
       type: http

@@ -1,0 +1,30 @@
+---
+openapi: "POST /rooms/{room_id}/pages/create_many"
+---
+
+Currently, You cannot try this API on the docs.
+
+### Request Body Example
+
+```json
+[
+  {
+    "entities": [
+      {
+        "type": "Image",
+        "src": "https://picsum.photos/id/237/367/267"
+      }
+    ]
+  },
+  {
+    "entities": [
+      {
+        "type": "Image",
+        "src": "https://picsum.photos/id/582/367/267"
+      }
+    ]
+  }
+]
+```
+
+This will create two pages, each containing a picture of a dog and a fox respectively.
