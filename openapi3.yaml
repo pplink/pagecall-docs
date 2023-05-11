@@ -668,18 +668,11 @@ components:
           type: boolean
           description: All meeting will be recorded
           default: true
-        is_distinct:
-          type: boolean
-          description: TODO
-          default: false
-        is_ephemeral:
-          type: boolean
-          description: This room is a temporary room. The room will be terminated when every members in this room exited
-          default: false
-        is_recurring:
-          type: boolean
-          description: This room is reserved for a meeting that occurs regularly. it will be reopened according to a predefined schedule.
-          default: false
+        max_meeting_time:
+          type: integer
+          description:
+            Determines the maximum meeting duration. Once this time has elapsed, the meeting room will be automatically terminated.
+            The 'meeting time' refers to the duration during which two or more participants are connected. If a `max_meeting_time` is set, the timer UI will display the remaining meeting time, rather than the elapsed time.
         room_template_id:
           type: string
           description: Select room template to enable or disable video, audio and canvas. you can get available room template options with `List Room Templates` API
