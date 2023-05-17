@@ -738,6 +738,18 @@ components:
           description: Specify inviting user_id and type
           items:
             $ref: "#/components/schemas/RoomMember"
+        webhook:
+          type: object
+          required:
+            - url
+          properties:
+            url:
+              type: string
+              description: an URL to which the Pagecall server will send the webhook
+            headers:
+              type: object
+              description: Headers to include when sending the webhook, which can be useful when authentication is required.
+
     RoomTemplate:
       type: object
       required:
