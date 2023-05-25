@@ -171,6 +171,38 @@ paths:
           description: Invalid Parameters Supplied or Unauthenticated or Unauthorized
         "500":
           description: Validation exception
+  /rooms/{room_id}/sessions:
+    parameters:
+      - in: path
+        name: room_id
+        required: true
+        schema:
+          type: string
+        description: room id
+        example: 000585f36eed9e8fb6b655b4
+    get:
+      security:
+        - ApiKeyAuth: []
+      tags: [room]
+      summary: Get Sessions in a Room
+      description: Get a list of sessions in a meeting room
+      operationId: GetRoomSessions
+      responses:
+        "200":
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  sessions:
+                    type: array
+                    items:
+                      $ref: "#/components/schemas/Session"
+        "400":
+          description: Invalid Parameters Supplied or Unauthenticated or Unauthorized
+        "500":
+          description: Validation exception
   /rooms/{room_id}/pages/create_many:
     parameters:
       - in: path
@@ -934,6 +966,32 @@ components:
             height: 3000
         index:
           type: integer
+    Session:
+      type: object
+      required:
+        - id
+        - member_id
+      properties:
+        id:
+          type: string
+          description: ID of the session
+          example: 000585f36eed9e8fb6b655b4
+        member_id:
+          type: string
+          description: ID for the member associated with the session
+          example: 000585f36eed9e8fb6b655b4
+        user_id:
+          type: string
+          description: ID for the user associated with the session. It can be empty if the session represents an anonymous user.
+          example: 000585f36eed9e8fb6b655b4
+        connected_at:
+          type: string
+          description: Datetime when the session was established
+          example: "2023-01-01T01:00:00.000Z"
+        disconnected_at:
+          type: string
+          description: Datetime when the session was ended. It can be empty if the session is online.
+          example: "2023-01-01T01:30:00.000Z"
 
   securitySchemes:
     ApiKeyAuth:
