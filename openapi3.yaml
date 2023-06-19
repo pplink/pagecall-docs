@@ -178,7 +178,6 @@ paths:
         required: true
         schema:
           type: string
-        description: room id
         example: 000585f36eed9e8fb6b655b4
     get:
       security:
@@ -187,6 +186,11 @@ paths:
       summary: Get Sessions in a Room
       description: Get a list of sessions in a meeting room
       operationId: GetRoomSessions
+      parameters:
+        - in: query
+          name: user_id
+          schema:
+            type: string
       responses:
         "200":
           description: Successful operation
