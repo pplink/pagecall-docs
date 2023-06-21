@@ -704,10 +704,6 @@ components:
           type: boolean
           description: Set true to close this room
           default: false
-        is_record_deleted:
-          type: boolean
-          description: Set true to delete all recordings. The room must be closed before deleting recodings.
-          default: false
     CreateRoomRequest:
       type: object
       description: Request format to create a new room
