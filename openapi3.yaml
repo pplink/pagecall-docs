@@ -286,8 +286,6 @@ paths:
             application/json:
               schema:
                 type: object
-                required:
-                  - room_templates
                 properties:
                   members:
                     type: array
@@ -399,39 +397,6 @@ paths:
                 properties:
                   member:
                     $ref: "#/components/schemas/Member"
-        "400":
-          description: Invalid Parameters Supplied or Unauthenticated or Unauthorized
-        "500":
-          description: Validation exception
-  /room_templates:
-    get:
-      security:
-        - ApiKeyAuth: []
-      tags: [room]
-      summary: List Room Templates
-      description: List available room templates for the user
-      operationId: listRoomTemplate
-      responses:
-        "200":
-          description: Successful operation
-          content:
-            application/json:
-              schema:
-                type: object
-                required:
-                  - room_templates
-                properties:
-                  room_templates:
-                    type: array
-                    example:
-                      - id: "000585f36eed9e8fb6b655b4"
-                        name: "templatae-1"
-                      - id: "000585f36eed9effb62615b4"
-                        name: "templatae-2"
-                    items:
-                      $ref: "#/components/schemas/RoomTemplate"
-                  paging:
-                    $ref: "#/components/schemas/Paging"
         "400":
           description: Invalid Parameters Supplied or Unauthenticated or Unauthorized
         "500":
@@ -765,10 +730,6 @@ components:
           description:
             Determines the maximum meeting duration. Once this time has elapsed, the meeting room will be automatically terminated.
             The 'meeting time' refers to the duration during which two or more participants are connected. If a `max_meeting_time` is set, the timer UI will display the remaining meeting time, rather than the elapsed time.
-        room_template_id:
-          type: string
-          description: Select room template to enable or disable video, audio and canvas. you can get available room template options with `List Room Templates` API
-          example: 63d0bf2b2dbc8f9743338be8
         members:
           type: array
           description: Specify inviting user_id and type
