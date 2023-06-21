@@ -409,6 +409,12 @@ paths:
       summary: List Users
       description: List users within workspace
       operationId: ListUsers
+      parameters:
+        - in: query
+          name: email_search_query
+          schema:
+            type: string
+          description: Filter users by their email
       responses:
         "200":
           description: Successful operation
