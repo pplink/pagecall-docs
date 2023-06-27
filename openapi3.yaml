@@ -189,8 +189,14 @@ paths:
       parameters:
         - in: query
           name: user_id
+          description: (Optional) Filter by user_id
           schema:
             type: string
+        - in: query
+          name: is_connecting
+          description: (Optional) Filter by their online status
+          schema:
+            type: boolean
       responses:
         "200":
           description: Successful operation
