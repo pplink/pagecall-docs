@@ -69,6 +69,14 @@ To redirect clients to the meeting room, simply construct a URL using the meetin
 return redirect(302, `https://app.pagecall.com/meet?room_id=${room.id}`);
 ```
 
+To connect a user to the room in Replay mode, it is similar to entering the meeting room, but you need to connect to */replay* instead of */meet* in the URL. If necessary, you should also include the user's access_token as shown below.
+
+```js
+return redirect(302, `https://app.pagecall.com/replay?room_id=${room.id}&access_token=${user.access_token}`);
+```
+
+However, please note that replay is not possible if there isn't any period when more than two people are connected simultaneously.
+
 The URL will remain valid until you remove the room.
 
 ## Further more
