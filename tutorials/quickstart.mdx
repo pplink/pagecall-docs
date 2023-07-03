@@ -75,7 +75,7 @@ To connect a user to the room in Replay mode, it is similar to entering the meet
 return redirect(302, `https://app.pagecall.com/replay?room_id=${room.id}&access_token=${user.access_token}`);
 ```
 
-However, please note that replay is not possible if there isn't any period when more than two people are connected simultaneously.
+However, please note that replay is not possible if there isn't any period when two or more people are connected simultaneously.
 
 The URL will remain valid until you remove the room.
 
