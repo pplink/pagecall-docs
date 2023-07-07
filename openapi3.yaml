@@ -733,10 +733,10 @@ components:
           type: boolean
           description: All meeting will be recorded
           default: true
-        max_meeting_time:
+        max_meeting_seconds:
           type: integer
           description:
-            Determines the maximum meeting duration. Once this time has elapsed, the meeting room will be automatically terminated.
+            Determines the maximum meeting time in seconds. Once this time has elapsed, the meeting room will be automatically terminated.
             The 'meeting time' refers to the duration during which two or more participants are connected. If a `max_meeting_time` is set, the timer UI will display the remaining meeting time, rather than the elapsed time.
         members:
           type: array
