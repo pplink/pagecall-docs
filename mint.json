@@ -34,9 +34,9 @@
       ]
     },
     {
-      "group": "Platforms",
+      "group": "Integrations",
       "pages": [
-        "tutorials/platform"
+        "sdk"
       ]
     },
     {
