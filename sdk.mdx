@@ -9,6 +9,18 @@ description: "Integrate Pagecall with your app"
 
 https://www.npmjs.com/package/@pagecall/react
 
+```tsx
+import { Pagecall } from "@pagecall/react";
+...
+  return (
+    <Pagecall
+      mode="meet"
+      roomId="<room id>"
+      accessToken="<access token>"
+    />
+  );
+```
+
 ## Native SDK
 
 Using the platform's native web view alone may not provide a seamless real-time experience in a native app.
@@ -23,14 +35,55 @@ If video functionality is essential for your service, please reach out to sales@
 
 https://github.com/pagecall/pagecall-ios-sdk
 
+```swift
+  let pagecall = PagecallWebView()
+  _ = pagecall.load(roomId: "<room id>", accessToken: "<access token>", mode: .meet)
+```
+
 ### Android
 
 https://github.com/pagecall/pagecall-android-sdk
+```java
+public class MainActivity extends AppCompatActivity {
+...
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+      ...
+      webView = new PagecallWebView(MainActivity.this);
+      webView.load("{room_id}", "{token}", PagecallWebView.PagecallMode.MEET);
+    }
+```
 
 ### React Native
 
 https://www.npmjs.com/package/react-native-pagecall
+```tsx
+import { PagecallView } from "react-native-pagecall";
+...
+  return (
+    <PagecallView
+      mode="meet"
+      roomId="<room id>"
+      accessToken="<access token>"
+    />
+  );
+```
 
 ### Flutter
 
 https://pub.dev/packages/flutter_pagecall
+
+```dart
+PagecallViewController? _pagecallViewController;
+...
+Expanded(
+  child: PagecallView(
+    mode: "meet",
+    roomId: "<room id>",
+    accessToken: "<access token>",
+    onViewCreated: (controller) {
+      _pagecallViewController = controller;
+    },
+  ),
+),
+```
