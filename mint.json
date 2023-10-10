@@ -48,7 +48,8 @@
         "references/endpoints/Update_Room",
         "references/endpoints/Delete_Room",
         "references/endpoints/Create_Room_Pages",
-        "references/endpoints/List_Room_Sessions"
+        "references/endpoints/List_Room_Sessions",
+        "references/endpoints/Send_Room_Message"
       ]
     },
     {

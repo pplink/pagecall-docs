@@ -407,6 +407,46 @@ paths:
           description: Invalid Parameters Supplied or Unauthenticated or Unauthorized
         "500":
           description: Validation exception
+  /rooms/{room_id}/message:
+    parameters:
+      - in: path
+        name: room_id
+        required: true
+        schema:
+          type: string
+        description: room id
+        example: 000585f36eed9e8fb6b655b4
+    post:
+      security:
+        - ApiKeyAuth: []
+      tags: [user]
+      summary: Send a message to a room
+      description: Send a message to live sessions in a room
+      operationId: roomsSendMessage
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - message
+              properties:
+                message:
+                  type: string
+      responses:
+        "200":
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+        "400":
+          description: Invalid Parameters Supplied or Unauthenticated or Unauthorized
+        "500":
+          description: Validation exception
   /users:
     get:
       security:
