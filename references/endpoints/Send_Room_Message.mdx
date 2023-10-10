@@ -1,0 +1,15 @@
+---
+openapi: "POST /rooms/{room_id}/message"
+---
+
+A message sent needs to be handled as below.
+Unless it is handled by the client-side SDK, it does nothing.
+
+```tsx
+<Pagecall
+  onMessage={(message) => {
+    // On a successful api call,
+    // this callback is called with the same `message` value as in the request body
+  }}
+/>
+```

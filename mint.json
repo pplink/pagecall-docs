@@ -11,6 +11,16 @@
     "light": "#4D9CFF",
     "dark": "#0050B4"
   },
+  "topbarLinks": [
+    {
+      "name": "Admin console",
+      "url": "https://admin.pagecall.com"
+    }
+  ],
+  "topbarCtaButton": {
+    "name": "Talk to us",
+    "url": "https://pagecall.com/consult"
+  },
   "anchors": [
     {
       "name": "API Reference",
@@ -21,9 +31,7 @@
   "navigation": [
     {
       "group": "Home",
-      "pages": [
-        "introduction"
-      ]
+      "pages": ["introduction"]
     },
     {
       "group": "HTTP API Guides",
@@ -35,9 +43,7 @@
     },
     {
       "group": "Integrations",
-      "pages": [
-        "sdk"
-      ]
+      "pages": ["sdk"]
     },
     {
       "group": "Room Endpoints",
@@ -48,7 +54,8 @@
         "references/endpoints/Update_Room",
         "references/endpoints/Delete_Room",
         "references/endpoints/Create_Room_Pages",
-        "references/endpoints/List_Room_Sessions"
+        "references/endpoints/List_Room_Sessions",
+        "references/endpoints/Send_Room_Message"
       ]
     },
     {
