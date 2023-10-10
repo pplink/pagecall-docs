@@ -31,9 +31,7 @@
   "navigation": [
     {
       "group": "Home",
-      "pages": [
-        "introduction"
-      ]
+      "pages": ["introduction"]
     },
     {
       "group": "HTTP API Guides",
@@ -45,9 +43,7 @@
     },
     {
       "group": "Integrations",
-      "pages": [
-        "sdk"
-      ]
+      "pages": ["sdk"]
     },
     {
       "group": "Room Endpoints",
