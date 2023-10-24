@@ -82,6 +82,23 @@ However, please note that replay is not possible if there isn't any period when 
 
 The URL will remain valid until you remove the room.
 
+## Embedding the meeting room using an iframe
+
+To seamlessly integrate the Pagecall meeting room within your application, you can utilize an iframe. This provides a more cohesive user experience by keeping participants within your app's interface, rather than redirecting them to an external URL.
+
+```html
+<iframe
+  title="Pagecall Meeting Room"
+  src="https://app.pagecall.com/meet?room_id={room.id}&access_token={user.access_token}"
+  width="100%"
+  height="100%"
+  frameborder="0"
+  allow="camera;microphone;fullscreen;display-capture"
+  onerror="handleIframeError()"
+></iframe>
+```
+Remember to define the `handleIframeError()` function in your JavaScript to handle any potential errors appropriately.
+
 ## Further more
 
 Congratulations! You've learned the basics of how to interact with Pagecall using our APIs. From here, you can explore the API documentation to learn more about the available resources and how to use them.
