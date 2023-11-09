@@ -43,6 +43,11 @@ paths:
           schema:
             type: string
           description: Layout name to search.
+        - in: query
+          name: is_terminated
+          schema:
+            type: boolean
+          description: Filter rooms by their termination status
       responses:
         "200":
           description: Successful operation
