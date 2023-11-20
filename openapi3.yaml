@@ -639,8 +639,8 @@ components:
           $ref: "#/components/schemas/RoomType"
         created_user_id:
           type: string
-          example: 000585f36eed9e8fb6b655b4
-          description: ID of the user who create this room
+          example: "#DEPRECATED#"
+          description: "*[Deprecated]* ID of the user who create this room"
         name:
           type: string
           example: "Weekly Meet"
@@ -651,13 +651,17 @@ components:
           description: Generated thumbnail for this room
         last_thumbnail_updated_at:
           type: string
-          example: "2023-01-01T01:00:00.000Z"
-          description: Last update time of generated thumbnail
+          example: "#DEPRECATED#"
+          description: "*[Deprecated]* Last update time of generated thumbnail"
           format: date-time
         room_template_id:
           type: string
-          example: 63d0bf2b2dbc8f9743338be8
-          description: ID of the room template used by this room
+          example: "#DEPRECATED#"
+          description: "*[Deprecated]* **Use `layout` instead.** ID of the room template used by this room"
+        layout:
+          type: string
+          example: "SixAll"
+          description: "How the room looks"
         record:
           type: boolean
           description: Whether this room is recorded or not.
@@ -667,13 +671,16 @@ components:
           description: Total meeting time in seconds
         is_terminated:
           type: boolean
-          description: Whether this room is terminated or not. If true, not available to join the room
+          example: "#DEPRECATED#"
+          description: "*[Deprecated]* **Use `terminated_at` instead.** Whether this room is terminated or not. If true, not available to join the room"
         is_ephemeral:
           type: boolean
-          description: Whether this room is for temporary or not. If true and all the members of this room leave, the room will be closed
+          example: "#DEPRECATED#"
+          description: "*[Deprecated]* Whether this room is for temporary or not. If true and all the members of this room leave, the room will be closed"
         is_recurring:
           type: boolean
-          description: Whether this meeting occurs regularly or not. If true, it will be reopened according to a predefined schedule.
+          example: "#DEPRECATED#"
+          description: "*[Deprecated]* Whether this meeting occurs regularly or not. If true, it will be reopened according to a predefined schedule."
         started_at:
           example: "2023-01-01T01:00:00.000Z"
           type: string
@@ -696,9 +703,8 @@ components:
           format: date-time
         members:
           type: array
-          description: Array of users who have joined this room
-          items:
-            $ref: "#/components/schemas/RoomMember"
+          example: []
+          description: "*[Deprecated]* **Make another 'List Members' API call.** Array of users who have joined this room"
     MemberType:
       type: string
       description: |
@@ -795,18 +801,6 @@ components:
               type: object
               description: Headers to include when sending the webhook, which can be useful when authentication is required.
 
-    RoomTemplate:
-      type: object
-      required:
-        - name
-        - id
-      properties:
-        name:
-          type: string
-          description: Name of room template
-        id:
-          type: string
-          description: ID of room template to create a new room
     # @scotty: UpdateUserRequest ⊂ CreateUserRequest ⊂ User,
     # However, we can not use "allOf" feature in openapi as mintlify dose not recognize "allOf" properties properly
     User:
