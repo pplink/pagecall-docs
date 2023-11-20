@@ -38,6 +38,11 @@ paths:
           schema:
             type: string
           description: Exact name of the room to search.
+        - in: query
+          name: layout
+          schema:
+            type: string
+          description: Layout name to search.
       responses:
         "200":
           description: Successful operation
