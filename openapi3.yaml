@@ -824,10 +824,6 @@ components:
           type: string
           description: Name of the user.
           example: scotty
-        nickname:
-          type: string
-          example: scotty_the_guest
-          description: Default display name of the user in the room
         profile_url:
           type: string
           example: https://www.gravatar.com/avatar/00000000000000000000000000000000?d=mp&f=y
@@ -863,10 +859,6 @@ components:
           type: string
           description: Name of the user.
           example: scotty
-        nickname:
-          type: string
-          example: scotty_the_guest
-          description: Default display name of the user in the room
         profile_url:
           type: string
           example: https://www.gravatar.com/avatar/00000000000000000000000000000000?d=mp&f=y
@@ -882,10 +874,6 @@ components:
           type: string
           description: Name of the user.
           example: scotty
-        nickname:
-          type: string
-          example: scotty_the_guest
-          description: Default display name of the user in the room
         profile_url:
           type: string
           example: https://www.gravatar.com/avatar/00000000000000000000000000000000?d=mp&f=y
