@@ -711,10 +711,6 @@ components:
           type: string
           description: The room is created at specified time format
           format: date-time
-        members:
-          type: array
-          example: []
-          description: "*[Deprecated]* **Make another 'List Members' API call.** Array of users who have joined this room"
     MemberType:
       type: string
       description: |
@@ -794,11 +790,6 @@ components:
           description:
             Determines the maximum meeting time in seconds. Once this time has elapsed, the meeting room will be automatically terminated.
             The 'meeting time' refers to the duration during which two or more participants are connected. If a `max_meeting_seconds` is set, the timer UI will display the remaining meeting time, rather than the elapsed time.
-        members:
-          type: array
-          description: Specify inviting user_id and type
-          items:
-            $ref: "#/components/schemas/RoomMember"
         webhook:
           type: object
           required:
