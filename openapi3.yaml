@@ -528,14 +528,14 @@ paths:
           description: Invalid Parameters Supplied or Unauthenticated or Unauthorized
         "500":
           description: Validation exception
-  /users/{user_id}:
+  /users/{id}:
     parameters:
       - in: path
-        name: user_id
+        name: id
         required: true
         schema:
           type: string
-        description: "`user_id` of the user"
+        description: user id
         example: external_user_102932
     get:
       security:
@@ -733,7 +733,7 @@ components:
       properties:
         user_id:
           type: string
-          description: "`user_id` of the user in application (workspace) scope"
+          description: ID of the user in application (workspace) scope
           example: 000585f36eed9e8fb6b655b4
         type:
           $ref: "#/components/schemas/MemberType"
@@ -814,7 +814,7 @@ components:
       properties:
         user_id:
           type: string
-          description: "ID of the user. Will override exisiting user if the specified ID already being used. Please note that `id` field is only used internally."
+          description: ID of the user. Will override exisiting user if the specified ID already being used.
           example: external_user_102932
         name:
           type: string
@@ -849,7 +849,7 @@ components:
       properties:
         user_id:
           type: string
-          description: "ID of the user. Will override exisiting user if the specified ID already being used. Please note that `id` field is only used internally."
+          description: ID of the user. Will override exisiting user if the specified ID already being used.
           example: "external_user_102932"
         name:
           type: string
@@ -892,7 +892,7 @@ components:
           example: 642d103ce95bc9dc22ef789f
         user_id:
           type: string
-          description: "`user_id` of the user."
+          description: ID of the user.
           example: "external_user_102932"
         room_id:
           type: string
@@ -907,7 +907,7 @@ components:
       properties:
         user_id:
           type: string
-          description: "`user_id` of the user."
+          description: ID of the user.
           example: "external_user_102932"
         type:
           $ref: "#/components/schemas/MemberType"
